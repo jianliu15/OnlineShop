@@ -21,11 +21,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.hasAuthority("ROLE_USER").antMatchers("/get*/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
 				.antMatchers("/admin*/**").hasAuthority("ROLE_ADMIN").anyRequest().permitAll().and().logout()
 				.logoutUrl("/logout");
-
 	}
 
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("stefanlaioffer@gmail.com").password("123").authorities("ROLE_ADMIN");
+		auth.inMemoryAuthentication().withUser("dugujian2020@gmail.com").password("12345678").authorities("ROLE_ADMIN");
 
 		auth.jdbcAuthentication().dataSource(dataSource)
 				.usersByUsernameQuery("SELECT emailId, password, enabled FROM users WHERE emailId=?")
